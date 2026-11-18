@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Root design tokens ─── */
+:root {
+  --bg-primary: #07090E;
+  --bg-secondary: #0D111A;
+  --gold: #E0B86C;
+  --gold-light: #F2CA80;
+  --bronze: #C5A880;
+  --ivory: #F5F4EE;
+  --border-subtle: rgba(255,255,255,0.08);
+  --border-gold: rgba(224,184,108,0.35);
+}
+
+/* ─── Base resets ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--ivory);
+  font-family: 'Manrope', system-ui, sans-serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ─── Typography ─── */
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.eyebrow {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: rgba(224,184,108,0.3); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(224,184,108,0.6); }
+
+/* ─── Selection ─── */
+::selection { background: rgba(224,184,108,0.2); color: var(--ivory); }
+
+/* ─── Gold button ─── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: linear-gradient(135deg, #E0B86C 0%, #B8943E 100%);
+  color: #07090E;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 4px 24px rgba(224,184,108,0.3);
+  text-decoration: none;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(224,184,108,0.45);
+}
+.btn-gold:active { transform: translateY(0); }
+
+/* ─── Glass ghost button ─── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: rgba(255,255,255,0.05);
+  color: var(--ivory);
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(224,184,108,0.4);
+  transform: translateY(-2px);
+}
+
+/* ─── WhatsApp button ─── */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(37,211,102,0.1);
+  color: #25D366;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(37,211,102,0.25);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-whatsapp:hover {
+  background: rgba(37,211,102,0.2);
+  transform: translateY(-2px);
+}
+
+/* ─── Card glass surface ─── */
+.card-glass {
+  background: rgba(13,17,26,0.8);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.card-glass:hover {
+  border-color: rgba(224,184,108,0.25);
+}
+
+/* ─── Gradient overlays ─── */
+.overlay-bottom {
+  background: linear-gradient(to top, rgba(7,9,14,1) 0%, rgba(7,9,14,0.7) 40%, transparent 100%);
+}
+.overlay-top {
+  background: linear-gradient(to bottom, rgba(7,9,14,0.8) 0%, transparent 50%);
+}
+.overlay-full {
+  background: linear-gradient(to top, rgba(7,9,14,0.9) 0%, rgba(7,9,14,0.5) 50%, rgba(7,9,14,0.2) 100%);
+}
+
+/* ─── Section padding ─── */
+.section-pad {
+  padding: 6rem 0;
+}
+@media (min-width: 1024px) {
+  .section-pad { padding: 9rem 0; }
+}
+
+/* ─── Grain texture overlay ─── */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ─── Horizontal divider with gold ─── */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(224,184,108,0.3), transparent);
+}
+
+/* ─── Status badge ─── */
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
+.badge-for-sale   { background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(239,68,68,0.25); }
+.badge-featured   { background: rgba(224,184,108,0.15); color: #E0B86C; border: 1px solid rgba(224,184,108,0.3); }
+.badge-new        { background: rgba(52,211,153,0.15); color: #34D399; border: 1px solid rgba(52,211,153,0.25); }
+.badge-off-plan   { background: rgba(139,92,246,0.15); color: #A78BFA; border: 1px solid rgba(139,92,246,0.25); }
+.badge-sold-out   { background: rgba(107,114,128,0.15); color: #9CA3AF; border: 1px solid rgba(107,114,128,0.2); }
+
+/* ─── Input field dark theme ─── */
+.field-dark {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  color: var(--ivory);
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+.field-dark::placeholder { color: rgba(245,244,238,0.3); }
+.field-dark:focus { border-color: rgba(224,184,108,0.5); }
+
+/* ─── Parallax image container ─── */
+.parallax-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.parallax-img {
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  object-position: center;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* ─── Section reveal animation ─── */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Smooth page transitions ─── */
+.page-enter { opacity: 0; transform: translateY(8px); }
+.page-enter-active { opacity: 1; transform: translateY(0); transition: all 0.5s cubic-bezier(0.16,1,0.3,1); }
+
+/* ─── Number counter ─── */
+.counter-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+
+/* ─── Hero canvas overlay ─── */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─── Property image zoom on hover ─── */
+.prop-img-wrap { overflow: hidden; }
+.prop-img-wrap img {
+  transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  will-change: transform;
+}
+.group:hover .prop-img-wrap img { transform: scale(1.06); }
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .parallax-img { transform: none !important; }
+}
